@@ -1,31 +1,30 @@
-package week4;
+package Week9;
 public class Book {
-    String title;
-    String author;
-    double price;
+    private String title;
+    private String author;
 
-    public Book() {
-        this.title = "Unknown Title";
-        this.author = "Unknown Author";
-        this.price = 0.0;
-    }
-    public Book(String title, String author, double price) {
+    public Book(String title, String author) {
         this.title = title;
         this.author = author;
-        this.price = price;
     }
-    public void display() {
-        System.out.println("Title: " + title);
-        System.out.println("Author: " + author);
-        System.out.println("Price: " + price);
-        System.out.println("---------------------");
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return title.equals(book.title) && author.equals(book.author);
     }
 
     public static void main(String[] args) {
-        Book book1 = new Book();
-        Book book2 = new Book("The Alchemist", "Paulo Coelho", 399.99);
-        book1.display();
-        book2.display();
+        Book b1 = new Book("1984", "George Orwell");
+        Book b2 = new Book("1984", "George Orwell");
+        Book b3 = b1;
+
+        System.out.println(b1 == b2);
+        System.out.println(b1.equals(b2));
+        System.out.println(b1 == b3);
+        System.out.println(b1.equals(b3));
     }
 }
 
